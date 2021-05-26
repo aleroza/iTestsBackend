@@ -23,6 +23,6 @@ app.use('/', Router);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
-});
+})
 
 //TODO большая работа с api imgur, данные для доступа к картинке можно хранить там же в коллекции теста

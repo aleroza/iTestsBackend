@@ -12,7 +12,7 @@ router.route('/:owner/:isGroup/:userID').get((req, res) => {
         {
         $match: {
             owner: parseInt(req.params.owner),
-            isGroup: Boolean(req.params.isGroup),
+            isGroup: (req.params.isGroup === 'true'),
             isActive: true
         }
     }
