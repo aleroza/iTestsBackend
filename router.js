@@ -6,6 +6,15 @@ let Test = require('./test.model');
  * https://github.com/VKCOM/vk-apps-launch-params
  */
 
+router.route('/sub_attempt').patch((req, res) => {
+    if(req.body.firstRun==='true') {
+        Test.findByIdAndUpdate(req.body.testID, ({ $push: { results: {_id: req.body.userID, attemptsLeft: "$numberOfAttempts"-1} } }))
+    .then((dbres) => console.log('subtracted ', dbres))
+            .then(() => res.json("Subtracted"))
+            .catch(err => res.status(400).json('Error: ' + err));
+    }
+})
+
 //http://localhost:5000/43340456/1/122320254
 router.route('/:owner/:isGroup/:userID').get((req, res) => {
     Test.aggregate([
@@ -21,6 +30,7 @@ router.route('/:owner/:isGroup/:userID').get((req, res) => {
             title: 1,
             description: 1,
             image: 1,
+            numberOfAttempts: 1,
             numberOfQuestions: {
                 $size: "$questions"
             },
