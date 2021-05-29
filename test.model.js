@@ -20,11 +20,13 @@ const ResultsSchema = new Schema({
     attemptsLeft: {type: Number, required: true}
 })
 
+//TODO Добавить везде тримы пробелов
+// либо найти глобальное решение этой проблемы
 const testSchema = new Schema({
     title: {type: String, required: true},
     description: {type: String, required: true},
     image: {type: String, required: false},
-    owner: {type: Number, required: true},
+    ownerID: {type: Number, required: true},
     isGroup: {type: Boolean, required: true},
     isActive: {type: Boolean, required: true},
     numberOfAttempts: {type: Number, required: true},
