@@ -8,14 +8,14 @@ const QuestionsSchema = new Schema({
     options: [
         {
             option: {type: String, required: true},
-            aftertext: {type: String, required: false }
+            aftertext: {type: String, required: false}
         }
     ],
     truth: {type: Number, required: true}
 })
 
 const ResultsSchema = new Schema({
-    _id: {type: Number, required:true, index:true},
+    _id: {type: Number, required: true, index: true},
     score: {type: Number, required: true},
     attemptsLeft: {type: Number, required: true}
 })
@@ -28,6 +28,7 @@ const testSchema = new Schema({
     image: {type: String, required: false},
     ownerID: {type: Number, required: true},
     isGroup: {type: Boolean, required: true},
+    showAnswers: {type: Boolean, required: true},
     isActive: {type: Boolean, required: true},
     numberOfAttempts: {type: Number, required: true},
     questions: [QuestionsSchema],
